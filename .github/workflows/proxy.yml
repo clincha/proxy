@@ -1,4 +1,4 @@
-name: streaming
+name: proxy
 
 on:
   workflow_dispatch:
