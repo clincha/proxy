@@ -54,14 +54,21 @@ metadata:
 data:
   nginx.conf: |
     events {
-    worker_connections  10240;
+        worker_connections  10240;
     }
     http {
-      server {
-        listen       443;
-        server_name  clinch-home.com;
-        location / {
-            proxy_pass http://192.168.1.23:31963;
+        server {
+            listen 443;
+            server_name clinch-home.com;
+            location / {
+                proxy_pass http://192.168.1.23:31963;
+            }
         }
-      }
+        server {
+            listen 80;
+            server_name clinch-home.com;
+            location / {
+                proxy_pass http://192.168.1.23:31963;
+            }
+        }    
     }
