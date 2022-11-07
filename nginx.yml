@@ -24,6 +24,10 @@ spec:
               name: nginx-config-volume
               subPath: nginx.conf
               readOnly: true
+            - mountPath: /etc/nginx/cert.pem
+              name: nginx-config-volume
+              subPath: cert.pem
+              readOnly: true
       volumes:
         - name: nginx-config-volume
           configMap:
@@ -58,7 +62,9 @@ data:
     }
     http {
       server {
-        listen 443 ssl;
+        listen 443 ssl;    
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
         server_name clinch-home.com;
         location / {
           proxy_pass http://192.168.1.23:31963;
@@ -72,3 +78,39 @@ data:
         }
       }    
     }
+  cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    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
+    7MMwYump+NnCkYXSfACI
+    -----END CERTIFICATE-----
