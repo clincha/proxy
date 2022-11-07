@@ -11,5 +11,16 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3.1.0
 
+      - name: download-key
+        run: echo "$NGINX_CERT_KEY" > key.pem
+        env:
+          NGINX_CERT_KEY: ${{ secret.NGINX_CERT_KEY }}
+
+      - name: create-nginx-config-secure
+        run: kubectl create configmap nginx-config-secure --from-file key.pem -o yaml --dry-run=client | kubectl apply -f -
+
+      - name: remove-key
+        run: rm -f key.pem
+
       - name: deploy-nginx
         run: kubectl apply -f nginx.yml
