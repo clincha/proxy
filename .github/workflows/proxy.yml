@@ -11,6 +11,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3.1.0
 
+      - name: destroy-nginx
+        run: kubectl delete -f nginx.yml
+
       - name: download-key
         run: echo "$NGINX_CERT_KEY" > key.pem
         env:

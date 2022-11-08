@@ -64,12 +64,14 @@ metadata:
   name: nginx-config
 data:
   nginx.conf: |
-    events {
-      worker_connections 1024;
-    }
+    worker_processes auto;
+    
     http {
+      ssl_session_cache   shared:SSL:10m;
+      ssl_session_timeout 10m;
       server {
         listen 443 ssl;    
+        keepalive_timeout 70;
         ssl_certificate cert.pem;
         ssl_certificate_key key.pem;
         server_name clinch-home.com;
