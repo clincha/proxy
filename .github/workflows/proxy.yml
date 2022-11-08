@@ -3,6 +3,8 @@ name: proxy
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
 
 jobs:
   deploy-proxy:
