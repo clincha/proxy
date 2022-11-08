@@ -13,6 +13,7 @@ jobs:
 
       - name: destroy-nginx
         run: kubectl delete -f nginx.yml
+        continue-on-error: true
 
       - name: download-key
         run: echo "$NGINX_CERT_KEY" > key.pem
