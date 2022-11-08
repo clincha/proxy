@@ -65,8 +65,10 @@ metadata:
   name: nginx-config
 data:
   nginx.conf: |
+    events {
+      worker_connections 1024;
+    }
     worker_processes auto;
-    
     http {
       ssl_session_cache   shared:SSL:10m;
       ssl_session_timeout 10m;
