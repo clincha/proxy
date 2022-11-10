@@ -54,10 +54,6 @@ spec:
       port: 443
       targetPort: 443
       nodePort: 32140
-    - protocol: TCP
-      name: tcp-insecure
-      port: 80
-      targetPort: 80
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -70,7 +66,7 @@ data:
     }
     worker_processes auto;
     http {
-      ssl_session_cache   shared:SSL:10m;
+      ssl_session_cache shared:SSL:10m;
       ssl_session_timeout 10m;
       server {
         listen 443 ssl;    
@@ -79,16 +75,9 @@ data:
         ssl_certificate_key key.pem;
         server_name clinch-home.com;
         location / {
-          proxy_pass http://192.168.1.23:31963;
+          proxy_pass http://192.168.1.23:30009;
         }
       }
-      server {
-        listen 80;
-        server_name clinch-home.com;
-        location / {
-          proxy_pass http://192.168.1.23:31963;
-        }
-      }    
     }
   cert.pem: |
     -----BEGIN CERTIFICATE-----
