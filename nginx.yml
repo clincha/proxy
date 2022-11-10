@@ -45,7 +45,6 @@ metadata:
   name: nginx-service
 spec:
   type: NodePort
-  externalTrafficPolicy: Cluster
   selector:
     app: nginx
   ports:
