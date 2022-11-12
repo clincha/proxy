@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
   name: nginx-deployment
 spec:
@@ -12,6 +12,7 @@ spec:
       labels:
         app: nginx
     spec:
+      nodeName: bri-kubeworker-1
       containers:
         - name: nginx
           image: nginx:1.23.2
