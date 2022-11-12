@@ -84,7 +84,7 @@ data:
         ssl_certificate_key key.pem;
         server_name www.clinch-home.com clinch-home.com;
         location / {
-          proxy_pass https://github.com/clincha;
+          return 301 https://www.github.com/clincha;
         }
       }
       server {
