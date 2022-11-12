@@ -68,6 +68,11 @@ data:
       ssl_session_cache shared:SSL:10m;
       ssl_session_timeout 10m;
       server {
+        listen 80 default_server;
+        server_name _;
+        return 301 https://$host$request_uri;
+      }
+      server {
         listen 443 ssl;    
         keepalive_timeout 70;
         ssl_certificate cert.pem;
