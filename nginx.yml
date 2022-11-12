@@ -52,7 +52,6 @@ spec:
       name: tcp-secure
       port: 443
       targetPort: 443
-      nodePort: 32140
 ---
 apiVersion: v1
 kind: ConfigMap
