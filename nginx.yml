@@ -50,7 +50,7 @@ spec:
   ports:
     - protocol: TCP
       name: tcp-secure
-      port: 443
+      port: 30000
       targetPort: 443
 ---
 apiVersion: v1
