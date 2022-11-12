@@ -68,6 +68,7 @@ data:
       ssl_session_cache shared:SSL:10m;
       ssl_session_timeout 10m;
       server {
+        ssl off;
         listen 80;
         server_name clinch-home.com;
         return 301 https://clinch-home.com$request_uri;
