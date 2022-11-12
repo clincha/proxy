@@ -73,7 +73,7 @@ data:
       ssl_session_timeout 10m;
       server {
         listen 80;
-        server_name clinch-home.com;
+        server_name www.clinch-home.com clinch-home.com;
         return 301 https://clinch-home.com$request_uri;
       }
       server {
@@ -82,9 +82,9 @@ data:
         keepalive_timeout 70;
         ssl_certificate cert.pem;
         ssl_certificate_key key.pem;
-        server_name clinch-home.com;
+        server_name www.clinch-home.com clinch-home.com;
         location / {
-          proxy_pass http://192.168.1.24:30007;
+          proxy_pass https://github.com/clincha;
         }
       }
       server {
@@ -92,7 +92,7 @@ data:
         keepalive_timeout 70;
         ssl_certificate cert.pem;
         ssl_certificate_key key.pem;
-        server_name deluge.clinch-home.com;
+        server_name www.deluge.clinch-home.com deluge.clinch-home.com;
         location / {
           proxy_pass http://192.168.1.24:30001;
         }
