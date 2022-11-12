@@ -71,6 +71,7 @@ data:
     http {
       ssl_session_cache shared:SSL:10m;
       ssl_session_timeout 10m;
+
       server {
         listen 80;
         server_name www.clinch-home.com clinch-home.com;
@@ -87,6 +88,12 @@ data:
           return 301 https://www.github.com/clincha;
         }
       }
+    
+      server {
+        listen 80;
+        server_name www.deluge.clinch-home.com deluge.clinch-home.com;
+        return 301 https://deluge.clinch-home.com$request_uri;
+      }
       server {
         listen 443 ssl;    
         keepalive_timeout 70;
@@ -94,7 +101,119 @@ data:
         ssl_certificate_key key.pem;
         server_name www.deluge.clinch-home.com deluge.clinch-home.com;
         location / {
-          proxy_pass http://192.168.1.24:30001;
+          proxy_pass http://192.168.1.22:30001;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.jackett.clinch-home.com jackett.clinch-home.com;
+        return 301 https://jackett.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.jackett.clinch-home.com jackett.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30005;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.ombi.clinch-home.com ombi.clinch-home.com;
+        return 301 https://ombi.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.ombi.clinch-home.com ombi.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30006;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.plex.clinch-home.com plex.clinch-home.com;
+        return 301 https://plex.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.plex.clinch-home.com plex.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30007;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.radarr.clinch-home.com radarr.clinch-home.com;
+        return 301 https://radarr.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.radarr.clinch-home.com radarr.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30008;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.sabnzbd.clinch-home.com sabnzbd.clinch-home.com;
+        return 301 https://sabnzbd.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.sabnzbd.clinch-home.com sabnzbd.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30009;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.sonarr.clinch-home.com sonarr.clinch-home.com;
+        return 301 https://sonarr.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.sonarr.clinch-home.com sonarr.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30010;
+        }
+      }
+    
+      server {
+        listen 80;
+        server_name www.tautulli.clinch-home.com tautulli.clinch-home.com;
+        return 301 https://tautulli.clinch-home.com$request_uri;
+      }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name www.tautulli.clinch-home.com tautulli.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.22:30011;
         }
       }
     }
