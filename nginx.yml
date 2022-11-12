@@ -50,7 +50,7 @@ spec:
   ports:
     - protocol: TCP
       name: tcp-secure
-      port: 443
+      port: 50000
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -66,7 +66,7 @@ data:
       ssl_session_cache shared:SSL:10m;
       ssl_session_timeout 10m;
       server {
-        listen 443 ssl;    
+        listen 50000 ssl;    
         keepalive_timeout 70;
         ssl_certificate cert.pem;
         ssl_certificate_key key.pem;
