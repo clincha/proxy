@@ -77,6 +77,16 @@ data:
           proxy_pass http://192.168.1.24:30007;
         }
       }
+      server {
+        listen 443 ssl;    
+        keepalive_timeout 70;
+        ssl_certificate cert.pem;
+        ssl_certificate_key key.pem;
+        server_name deluge.clinch-home.com;
+        location / {
+          proxy_pass http://192.168.1.24:30001;
+        }
+      }
     }
   cert.pem: |
     -----BEGIN CERTIFICATE-----
