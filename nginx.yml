@@ -44,14 +44,13 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: nginx
   ports:
     - protocol: TCP
       name: tcp-secure
-      port: 30000
-      targetPort: 443
+      port: 443
 ---
 apiVersion: v1
 kind: ConfigMap
