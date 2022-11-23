@@ -216,22 +216,6 @@ data:
           proxy_pass http://192.168.1.22:30011;
         }
       }
-    
-      server {
-        listen 80;
-        server_name www.handbrake.clinch-home.com handbrake.clinch-home.com;
-        return 301 https://handbrake.clinch-home.com$request_uri;
-      }
-      server {
-        listen 443 ssl;    
-        keepalive_timeout 70;
-        ssl_certificate cert.pem;
-        ssl_certificate_key key.pem;
-        server_name www.handbrake.clinch-home.com handbrake.clinch-home.com;
-        location / {
-          proxy_pass http://192.168.1.22:30012;
-        }
-      }
     }
   cert.pem: |
     -----BEGIN CERTIFICATE-----
