@@ -215,54 +215,7 @@ data:
         location / {
           proxy_pass http://192.168.1.22:30011;
         }
-      }
-    
-      server {
-        listen 80;
-        server_name www.tdarr.clinch-home.com tdarr.clinch-home.com;
-        return 301 https://tdarr.clinch-home.com$request_uri;
-      }
-      server {
-        listen 443 ssl;    
-        keepalive_timeout 70;
-        ssl_certificate cert.pem;
-        ssl_certificate_key key.pem;
-        server_name www.tdarr.clinch-home.com tdarr.clinch-home.com;
-        location / {
-          proxy_pass http://192.168.1.22:30012;
-        }
-      }
-    
-      server {
-        listen 80;
-        server_name www.elasticstar.clinch-home.com elasticstar.clinch-home.com;
-        return 301 https://elasticstar.clinch-home.com$request_uri;
-      }
-      server {
-        listen 443 ssl;    
-        keepalive_timeout 70;
-        ssl_certificate cert.pem;
-        ssl_certificate_key key.pem;
-        server_name www.elasticstar.clinch-home.com elasticstar.clinch-home.com;
-        location / {
-    
-          proxy_set_header                X-Localhost true;
-          proxy_set_header                X-Real-IP $remote_addr;
-          proxy_set_header                X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_pass http://192.168.1.22:30015;
-
-          proxy_redirect                  off;
-          proxy_buffers                   32 16k;
-          proxy_busy_buffers_size         64k;
-          proxy_cache                     off;
-          # Headers for client browser NOCACHE + CORS origin filter 
-          add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
-          expires off;
-          add_header    'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
-          add_header    'Access-Control-Allow-Headers' 'Origin, X-Requested-With, Content-Type, Accept' always;
-          allow all;
-        }
-      }
+      }    
     }
   cert.pem: |
     -----BEGIN CERTIFICATE-----
